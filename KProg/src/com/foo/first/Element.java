@@ -8,6 +8,7 @@ public class Element extends Thread {
 
 	public Element(int p) {
 		this.i = p;
+		System.out.println("I've just got born, im element nr " + p);
 		this.start();
 	}
 
@@ -29,6 +30,7 @@ public class Element extends Thread {
 				}
 			}
 		}
+		System.out.println("Hello im Element " + i + " im dying, please help! :(");
 	}
 
 	synchronized int receive() {
