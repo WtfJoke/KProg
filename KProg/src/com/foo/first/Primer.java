@@ -26,7 +26,7 @@ public class Primer extends Thread {
 
 	@Override
 	public void run() {
-		System.out.println(indent + " Primzahl: " + p);
+		System.out.println(indent + p);
 		while (true) {
 			int n = receive();
 			if (n == 0) {
