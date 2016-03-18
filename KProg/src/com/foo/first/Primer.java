@@ -1,5 +1,8 @@
 package com.foo.first;
 
+/**
+ * Calculates the next prime numbers from a given number
+ */
 public class Primer extends Thread {
 	private int p; // die Primzahl dieses Primers
 	private Primer next; // der nächste Primer in der "Pipe"
