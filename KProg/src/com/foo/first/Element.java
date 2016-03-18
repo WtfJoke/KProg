@@ -1,39 +1,49 @@
 package com.foo.first;
 
+/**
+ * Represent a number, which will hold in a own thread.
+ * 
+ * @author Phi Long Tran<191624>, Homa Alavi <191720>, Manuel Wessner<191711>
+ */
 public class Element extends Thread {
 
-	private int i;
+	private final int number;
 	private Element next;
 	private int buffer = -1;
 
-	public Element(int p) {
-		this.i = p;
-		System.out.println("I've just got born, im element nr " + p);
+	public Element(int number) {
+		this.number = number;
+		System.out.println("I've just got born, im element nr " + number);
 		this.start();
 	}
 
+	/**
+	 * Creates dynamically new elements from a received number, which was send
+	 * by method {@link #send(int)}. Abort in case 0 was received
+	 * 
+	 */
 	@Override
 	public void run() {
-		System.out.println(i);
+		System.out.println(number);
 		while (true) {
-			int n = receive();
-			if (n == 0) {
+			int receivedNumber = receive();
+			if (receivedNumber == 0) {
 				if (next != null) {
-					next.send(n);
+					next.send(receivedNumber);
 				}
 				break;
 			} else {
 				if (next != null) {
-					next.send(n);
+					next.send(receivedNumber);
 				} else {
-					next = new Element(n);
+					next = new Element(receivedNumber);
 				}
 			}
 		}
-		System.out.println("Hello im Element " + i + " im dying, please help! :(");
+		System.out.println("Hello im Element " + number + " im dying, please help! :(");
 	}
 
-	synchronized int receive() {
+	private synchronized int receive() {
 		int result = 0;
 		try {
 			while ((result = buffer) < 0) {
