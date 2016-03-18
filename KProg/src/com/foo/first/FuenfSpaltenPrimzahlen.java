@@ -3,6 +3,11 @@ package com.foo.first;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Calculates and prints the prime numbers in several columns
+ * 
+ * @author Phi Long Tran<191624>, Homa Alavi <191720>, Manuel Wessner<191711>
+ */
 public class FuenfSpaltenPrimzahlen {
 
 	private static final int PRIMEMAX = 5000;
@@ -19,24 +24,24 @@ public class FuenfSpaltenPrimzahlen {
 		stopAll(primers);
 	}
 
-	static void sendAll(List<Primer> primers) {
+	private static void sendAll(List<Primer> primers) {
 		for (Primer primer : primers) {
 			send(primer);
 		}
 	}
 
-	static void stopAll(List<Primer> primers) {
+	private static void stopAll(List<Primer> primers) {
 		for (Primer primer : primers) {
 			stop(primer);
 		}
 	}
 
-	static void send(Primer primer) {
+	private static void send(Primer primer) {
 		for (int i = 3; i <= PRIMEMAX; primer.send(i++)) {
 		}
 	}
 
-	static void stop(Primer primer) {
+	private static void stop(Primer primer) {
 		primer.send(0);
 	}
 
