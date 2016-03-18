@@ -6,7 +6,7 @@ public class FastPipe {
 
 	public static void main(String[] args) {
 		Element element = new Element(1);
-		for (int i = 1; i <= MAX; element.send(i++)) {
+		for (int i = 2; i <= MAX; element.send(i++)) {
 		}
 		element.send(0);
 	}
