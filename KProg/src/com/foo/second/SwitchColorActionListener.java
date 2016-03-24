@@ -12,9 +12,9 @@ public class SwitchColorActionListener implements ActionListener {
 	private final List<Color> correspondingColors;
 	private final Frame correspondingFrame;
 
-	public SwitchColorActionListener(Frame correspondingFrame) {
+	public SwitchColorActionListener(Frame correspondingFrame, Colorable colorable) {
 		this.correspondingFrame = correspondingFrame;
-		this.correspondingColors = Colors.getCorrespondingColors();
+		this.correspondingColors = colorable.getCorrespondingColors();
 	}
 
 	@Override

@@ -19,7 +19,7 @@ public class FarbClones extends Frame {
 		setLayout(new FlowLayout());
 		add(cycleColorButton);
 		add(openNewWindowButton);
-		cycleColorButton.addActionListener(new SwitchColorActionListener(this));
+		cycleColorButton.addActionListener(new SwitchColorActionListener(this, Colors.BLACK));
 		openNewWindowButton.addActionListener(new ActionListener() {
 
 			@Override

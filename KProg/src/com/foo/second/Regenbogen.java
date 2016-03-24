@@ -26,7 +26,7 @@ public class Regenbogen extends Frame {
 				new Regenbogen();
 			}
 		});
-		Timer timer = new Timer(750, new SwitchColorActionListener(this));
+		Timer timer = new Timer(750, new SwitchColorActionListener(this, RainbowColors.BLUE));
 		timer.start();
 	}
 
