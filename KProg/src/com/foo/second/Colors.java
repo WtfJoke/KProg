@@ -32,7 +32,7 @@ public enum Colors {
 		return color;
 	}
 
-	List<Color> getCorrespondingColors() {
+	static List<Color> getCorrespondingColors() {
 		List<Color> colors = new ArrayList<>();
 		for (Colors colorEnum : values()) {
 			colors.add(colorEnum.get());
