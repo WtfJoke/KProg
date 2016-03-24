@@ -10,8 +10,8 @@ public class DutzendFarben extends Frame {
 
 	public DutzendFarben() {
 		setLayout(new FlowLayout());
-		addButtons(ColorButtons.get());
-		addColorButtonActionListeners(ColorButtons.get());
+		addColorButtons();
+		addColorButtonActionListeners();
 	}
 
 	public static void main(String[] args) {
@@ -21,13 +21,15 @@ public class DutzendFarben extends Frame {
 		frm.setVisible(true);
 	}
 
-	private void addButtons(List<Button> buttons) {
+	private void addColorButtons() {
+		List<Button> buttons = ColorButtons.get();
 		for (Button button : buttons) {
 			add(button);
 		}
 	}
 
-	private void addColorButtonActionListeners(List<Button> buttons) {
+	private void addColorButtonActionListeners() {
+		List<Button> buttons = ColorButtons.get();
 		ColorButtonActionListener actionListener = new ColorButtonActionListener(this);
 		for (Button button : buttons) {
 			button.addActionListener(actionListener);
