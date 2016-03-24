@@ -9,21 +9,21 @@ import java.util.List;
 public class SwitchColorActionListener implements ActionListener {
 
 	private int currentColorIndex;
-	private final List<Color> correspondingColors;
+	private final List<Color> colorsToSwitch;
 	private final Frame correspondingFrame;
 
-	public SwitchColorActionListener(Frame correspondingFrame, Colorable colorable) {
+	public SwitchColorActionListener(Frame correspondingFrame, List<Color> colorsToSwitch) {
 		this.correspondingFrame = correspondingFrame;
-		this.correspondingColors = colorable.getCorrespondingColors();
+		this.colorsToSwitch = colorsToSwitch;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		correspondingFrame.setBackground(correspondingColors.get(getIndex()));
+		correspondingFrame.setBackground(colorsToSwitch.get(getIndex()));
 	}
 
 	private int getIndex() {
-		if (currentColorIndex++ >= correspondingColors.size() - 1) {
+		if (currentColorIndex++ >= colorsToSwitch.size() - 1) {
 			currentColorIndex = 0;
 		}
 		return currentColorIndex;

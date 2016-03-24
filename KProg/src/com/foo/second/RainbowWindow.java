@@ -14,7 +14,7 @@ public class RainbowWindow extends Frame {
 		setSize(400, 300);
 		setVisible(true);
 		setLayout(new FlowLayout());
-		Timer timer = new Timer(750, new SwitchColorActionListener(this, RainbowColors.BLUE));
+		Timer timer = new Timer(750, new SwitchColorActionListener(this, ColorPicker.getRainbowColors()));
 		timer.start();
 	}
 }

@@ -14,10 +14,8 @@ import static java.awt.Color.white;
 import static java.awt.Color.yellow;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
 
-public enum Colors implements Colorable {
+public enum Colors {
 
 	BLACK(black), BLUE(blue), CYAN(cyan), GRAY(gray), GREEN(green), LIGHTGRAY(lightGray), MAGENTA(magenta), ORANGE(
 			orange), PINK(pink), RED(red), WHITE(white), YELLOW(yellow);
@@ -30,13 +28,5 @@ public enum Colors implements Colorable {
 
 	Color get() {
 		return color;
-	}
-
-	public List<Color> getCorrespondingColors() {
-		List<Color> colors = new ArrayList<>();
-		for (Colors colorEnum : values()) {
-			colors.add(colorEnum.get());
-		}
-		return colors;
 	}
 }
