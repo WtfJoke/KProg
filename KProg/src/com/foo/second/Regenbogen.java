@@ -6,8 +6,6 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Timer;
-
 public class Regenbogen extends Frame {
 
 	private static final long serialVersionUID = 4860837199461628871L;
@@ -23,11 +21,9 @@ public class Regenbogen extends Frame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Regenbogen();
+				new RainbowWindow();
 			}
 		});
-		Timer timer = new Timer(750, new SwitchColorActionListener(this, RainbowColors.BLUE));
-		timer.start();
 	}
 
 	public static void main(String[] args) {
