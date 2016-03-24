@@ -20,7 +20,7 @@ public class SwitchColor {
 	}
 
 	private int getIndex() {
-		if (currentColorIndex++ >= correspondingColors.size()) {
+		if (currentColorIndex++ >= correspondingColors.size() - 1) {
 			currentColorIndex = 0;
 		}
 		return currentColorIndex;
