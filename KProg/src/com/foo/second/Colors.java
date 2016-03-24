@@ -38,6 +38,5 @@ public enum Colors {
 			colors.add(colorEnum.get());
 		}
 		return colors;
-
 	}
 }
