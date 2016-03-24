@@ -7,6 +7,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Holds the logic, for unlock a guessed code
+ * 
+ * @author manue
+ *
+ */
 public class UnlockActionListener implements ActionListener {
 
 	private int currentListPosition;
@@ -23,9 +29,9 @@ public class UnlockActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
-		Integer actionAsInt = Integer.valueOf(actionCommand);
-		if (actionAsInt == unlockCode.get(currentListPosition)) {
-			userCode.add(Integer.valueOf(actionAsInt));
+		Integer userInput = Integer.valueOf(actionCommand);
+		if (userInput == unlockCode.get(currentListPosition)) {
+			userCode.add(Integer.valueOf(userInput));
 			belongToFrame.setBackground(Color.green);
 			currentListPosition++;
 			if (userCode.equals(unlockCode)) {

@@ -6,6 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * Action listener, which switches the background-color from a given list
+ * 
+ * @author manue
+ *
+ */
 public class SwitchColorActionListener implements ActionListener {
 
 	private int currentColorIndex;

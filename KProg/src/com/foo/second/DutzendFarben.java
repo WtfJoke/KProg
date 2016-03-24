@@ -5,6 +5,11 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.util.List;
 
+/**
+ * Frame, which has couple of buttons, which changes the background color
+ *
+ * @author manue
+ */
 public class DutzendFarben extends Frame {
 	private static final long serialVersionUID = 6625931553571415973L;
 

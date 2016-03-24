@@ -6,6 +6,14 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Frame, which holds two button. <br>
+ * - One which changes the background color <br>
+ * - One which opens a new frame
+ * 
+ * @author manue
+ *
+ */
 public class FarbClones extends Frame {
 
 	private static final long serialVersionUID = 3175136255486722145L;

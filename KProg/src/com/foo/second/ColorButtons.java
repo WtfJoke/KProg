@@ -5,6 +5,12 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Holds a list of {@link ColorButton}
+ * 
+ * @author manue
+ *
+ */
 public final class ColorButtons {
 
 	private static List<Button> colorButtons;

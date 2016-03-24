@@ -6,6 +6,12 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Frame which is a bridge to {@link RainbowWindow}
+ * 
+ * @author manue
+ *
+ */
 public class Regenbogen extends Frame {
 
 	private static final long serialVersionUID = 4860837199461628871L;

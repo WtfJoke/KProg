@@ -4,6 +4,12 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Is responsible for providing a set of colors
+ * 
+ * @author manue
+ *
+ */
 public class ColorPicker {
 
 	static List<Color> getRainbowColors() {

@@ -4,6 +4,12 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Switches to the color of the passed color button from the action
+ * 
+ * @author manue
+ *
+ */
 public class ColorButtonActionListener implements ActionListener {
 
 	private final Frame belongingFrame;

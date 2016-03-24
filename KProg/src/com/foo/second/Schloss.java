@@ -6,6 +6,12 @@ import java.awt.Frame;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Frame, which is used to guess a secret code
+ * 
+ * @author manue
+ *
+ */
 public class Schloss extends Frame {
 	private static final long serialVersionUID = 2624446559320231971L;
 	private Button button0 = new Button("0");

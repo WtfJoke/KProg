@@ -15,6 +15,11 @@ import static java.awt.Color.yellow;
 
 import java.awt.Color;
 
+/**
+ * Enum definition of couple of colors
+ *
+ * @author manue
+ */
 public enum Colors {
 
 	BLACK(black), BLUE(blue), CYAN(cyan), GRAY(gray), GREEN(green), LIGHTGRAY(lightGray), MAGENTA(magenta), ORANGE(

@@ -10,6 +10,11 @@ import static java.awt.Color.yellow;
 
 import java.awt.Color;
 
+/**
+ * Enum representation of rainbow colors
+ *
+ * @author manue
+ */
 public enum RainbowColors {
 	RED(red), ORANGE(orange), YELLOW(yellow), GREEN(green), BLUE(blue), CYAN(cyan), MAGENTA(magenta);
 

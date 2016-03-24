@@ -5,6 +5,13 @@ import java.awt.Frame;
 
 import javax.swing.Timer;
 
+/**
+ * Frame, which the background cycles in rainbow colors in a certain amount of
+ * time
+ * 
+ * @author manue
+ *
+ */
 public class RainbowWindow extends Frame {
 
 	private static final long serialVersionUID = 4584500569164978315L;
