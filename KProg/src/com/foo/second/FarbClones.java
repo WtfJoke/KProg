@@ -11,8 +11,9 @@ import java.awt.event.ActionListener;
  * - One which changes the background color <br>
  * - One which opens a new frame
  * 
- * @author manue
- *
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
  */
 public class FarbClones extends Frame {
 

@@ -7,8 +7,9 @@ import java.util.List;
 /**
  * Is responsible for providing a set of colors
  * 
- * @author manue
- *
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
  */
 public class ColorPicker {
 

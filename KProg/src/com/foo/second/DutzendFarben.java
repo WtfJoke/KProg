@@ -8,7 +8,9 @@ import java.util.List;
 /**
  * Frame, which has couple of buttons, which changes the background color
  *
- * @author manue
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
  */
 public class DutzendFarben extends Frame {
 	private static final long serialVersionUID = 6625931553571415973L;

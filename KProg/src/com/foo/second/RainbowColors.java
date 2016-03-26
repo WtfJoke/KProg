@@ -13,7 +13,9 @@ import java.awt.Color;
 /**
  * Enum representation of rainbow colors
  *
- * @author manue
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
  */
 public enum RainbowColors {
 	RED(red), ORANGE(orange), YELLOW(yellow), GREEN(green), BLUE(blue), CYAN(cyan), MAGENTA(magenta);

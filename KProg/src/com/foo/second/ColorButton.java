@@ -6,6 +6,9 @@ import java.awt.Color;
 /**
  * Button which is extended with a {@link Color}
  *
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
  */
 public class ColorButton extends Button {
 

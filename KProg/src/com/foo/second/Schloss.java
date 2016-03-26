@@ -9,7 +9,9 @@ import java.util.List;
 /**
  * Frame, which is used to guess a secret code
  * 
- * @author manue
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
  *
  */
 public class Schloss extends Frame {

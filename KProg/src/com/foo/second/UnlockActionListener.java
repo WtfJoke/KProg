@@ -10,8 +10,9 @@ import java.util.List;
 /**
  * Holds the logic, for unlock a guessed code
  * 
- * @author manue
- *
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
  */
 public class UnlockActionListener implements ActionListener {
 

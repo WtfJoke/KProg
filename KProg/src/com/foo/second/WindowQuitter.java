@@ -5,9 +5,6 @@ import java.awt.event.WindowEvent;
 
 /**
  * Implements closing of window, by shutting down the vm
- * 
- * @author manue
- *
  */
 public class WindowQuitter extends WindowAdapter {
 	@Override

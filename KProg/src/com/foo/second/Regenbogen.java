@@ -9,8 +9,9 @@ import java.awt.event.ActionListener;
 /**
  * Frame which is a bridge to {@link RainbowWindow}
  * 
- * @author manue
- *
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
  */
 public class Regenbogen extends Frame {
 

@@ -9,8 +9,9 @@ import javax.swing.Timer;
  * Frame, which the background cycles in rainbow colors in a certain amount of
  * time
  * 
- * @author manue
- *
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
  */
 public class RainbowWindow extends Frame {
 

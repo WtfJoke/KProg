@@ -7,8 +7,9 @@ import java.awt.event.ActionListener;
 /**
  * Switches to the color of the passed color button from the action
  * 
- * @author manue
- *
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
  */
 public class ColorButtonActionListener implements ActionListener {
 

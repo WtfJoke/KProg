@@ -18,7 +18,10 @@ import java.awt.Color;
 /**
  * Enum definition of couple of colors
  *
- * @author manue
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
+ * 
  */
 public enum Colors {
 

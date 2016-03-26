@@ -9,8 +9,9 @@ import java.util.List;
 /**
  * Action listener, which switches the background-color from a given list
  * 
- * @author manue
- *
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
  */
 public class SwitchColorActionListener implements ActionListener {
 
