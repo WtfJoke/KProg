@@ -11,7 +11,7 @@ import java.util.List;
  * @author Phi Long Tran <191624>
  * @author Steve Nono <191709>
  */
-public class ColorPicker {
+public abstract class ColorPicker {
 
 	static List<Color> getRainbowColors() {
 		List<Color> colors = new ArrayList<>();
