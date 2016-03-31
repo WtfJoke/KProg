@@ -50,6 +50,12 @@ public class Schloss extends JFrame {
 	}
 
 	private void addButtons() {
+		List<JButton> buttons = createButtons();
+		ButtonDrawer.draw(getContentPane(), buttons);
+		startButtonSwapper(buttons);
+	}
+
+	private List<JButton> createButtons() {
 		UnlockActionListener unlockActionListener = new UnlockActionListener(this, unlockCode);
 		List<JButton> buttons = new ArrayList<>();
 		for (int i = 0; i < AMOUNTOFBUTTONS; i++) {
@@ -58,8 +64,7 @@ public class Schloss extends JFrame {
 			button.setActionCommand(button.getText());
 			button.addActionListener(unlockActionListener);
 		}
-		ButtonDrawer.draw(getContentPane(), buttons);
-		startButtonSwapper(buttons);
+		return buttons;
 	}
 
 	private void startButtonSwapper(List<JButton> buttons) {
