@@ -1,13 +1,12 @@
 package com.foo.third;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
+import javax.swing.JButton;
 
 /**
  * Holds the logic, for unlock a guessed code
@@ -19,13 +18,13 @@ import javax.swing.JFrame;
 public class UnlockActionListener implements ActionListener {
 
 	private int currentListPosition;
-	private final JFrame belongToFrame;
 	private final List<Integer> unlockCode;
 	private final List<Integer> userCode;
+	private final List<JButton> buttons;
 
-	public UnlockActionListener(JFrame belongToFrame, List<Integer> unlockCode) {
-		this.belongToFrame = belongToFrame;
+	public UnlockActionListener(List<Integer> unlockCode, List<JButton> buttons) {
 		this.unlockCode = unlockCode;
+		this.buttons = buttons;
 		this.userCode = new ArrayList<>();
 	}
 
@@ -45,14 +44,13 @@ public class UnlockActionListener implements ActionListener {
 			currentListPosition = 0;
 			userCode.clear();
 			setBackground(Color.red);
+			SwapButtons.switchdirection();
 		}
 	}
 
 	private void setBackground(Color color) {
-		Component[] components = belongToFrame.getContentPane().getComponents();
-		for (int i = 0; i < components.length; i++) {
-			Component component = components[i];
-			component.setBackground(color);
+		for (JButton button : buttons) {
+			button.setBackground(color);
 		}
 	}
 

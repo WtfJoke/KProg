@@ -1,6 +1,7 @@
 package com.foo.third;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,14 +61,15 @@ public class Schloss extends JFrame {
 	}
 
 	private List<JButton> createButtons() {
-		UnlockActionListener unlockActionListener = new UnlockActionListener(this, unlockCode);
 		List<JButton> buttons = new ArrayList<>();
+		UnlockActionListener unlockActionListener = new UnlockActionListener(unlockCode, buttons);
 		for (int i = 0; i < AMOUNTOFBUTTONS; i++) {
 			JButton button = new JButton(String.valueOf(i));
 			Dimension dimension = new Dimension(75, 75);
 			buttons.add(button);
 			button.setSize(dimension);
 			button.setActionCommand(button.getText());
+			button.setBackground(Color.green);
 			button.addActionListener(unlockActionListener);
 		}
 		return buttons;
