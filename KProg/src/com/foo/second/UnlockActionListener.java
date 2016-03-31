@@ -35,7 +35,8 @@ public class UnlockActionListener implements ActionListener {
 			userCode.add(userInput);
 			belongToFrame.setBackground(Color.green);
 			currentListPosition++;
-			if (userCode.equals(unlockCode)) {
+			boolean isUnlocked = userCode.equals(unlockCode);
+			if (isUnlocked) {
 				System.exit(0);
 			}
 		} else {
