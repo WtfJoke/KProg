@@ -6,16 +6,13 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 
 public class SwapButtons implements ActionListener {
 
-	private JFrame frame;
 	private List<JButton> buttons;
-	private boolean clockwise;
+	private static boolean clockwise;
 
-	public SwapButtons(JFrame frame, List<JButton> buttons) {
-		this.frame = frame;
+	public SwapButtons(List<JButton> buttons) {
 		this.buttons = buttons;
 	}
 
@@ -29,7 +26,7 @@ public class SwapButtons implements ActionListener {
 		ButtonDrawer.redraw(buttons);
 	}
 
-	public void switchdirection() {
+	public static void switchdirection() {
 		clockwise = !clockwise;
 	}
 }

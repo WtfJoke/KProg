@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-import com.foo.second.UnlockActionListener;
 import com.foo.second.WindowQuitter;
 
 /**
@@ -66,8 +65,8 @@ public class Schloss extends JFrame {
 		for (int i = 0; i < AMOUNTOFBUTTONS; i++) {
 			JButton button = new JButton(String.valueOf(i));
 			Dimension dimension = new Dimension(75, 75);
-			button.setSize(dimension);
 			buttons.add(button);
+			button.setSize(dimension);
 			button.setActionCommand(button.getText());
 			button.addActionListener(unlockActionListener);
 		}
@@ -75,6 +74,6 @@ public class Schloss extends JFrame {
 	}
 
 	private void startButtonSwapper(List<JButton> buttons) {
-		new Timer(BUTTONSWAPDELAY, new SwapButtons(this, buttons)).start();
+		new Timer(BUTTONSWAPDELAY, new SwapButtons(buttons)).start();
 	}
 }
