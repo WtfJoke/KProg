@@ -29,12 +29,12 @@ public class Schloss extends JFrame {
 	public Schloss() {
 		addWindowListener(new WindowQuitter());
 		setSize(600, 300);
-		setVisible(true);
 		// GridLayout layout = new GridLayout(4, 3);
 		LayoutManager layout = new BorderLayout();
 		getContentPane().setLayout(layout);
 		createUnlockCode();
 		addButtons();
+		setVisible(true);
 	}
 
 	private void createUnlockCode() {
