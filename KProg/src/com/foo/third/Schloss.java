@@ -1,6 +1,7 @@
 package com.foo.third;
 
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.LayoutManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -27,10 +28,11 @@ public class Schloss extends JFrame {
 
 	public Schloss() {
 		addWindowListener(new WindowQuitter());
-		setSize(1000, 400);
+		setSize(600, 300);
 		setVisible(true);
-		GridLayout layout = new GridLayout(4, 3);
-		setLayout(layout);
+		// GridLayout layout = new GridLayout(4, 3);
+		LayoutManager layout = new BorderLayout();
+		getContentPane().setLayout(layout);
 		createUnlockCode();
 		addButtons();
 	}
@@ -51,8 +53,19 @@ public class Schloss extends JFrame {
 
 	private void addButtons() {
 		List<JButton> buttons = createButtons();
-		ButtonDrawer.draw(getContentPane(), buttons);
-		startButtonSwapper(buttons);
+		ButtonDrawer.draw(buttons);
+		getContentPane().add(ButtonDrawer.getEastButtonPanel(), BorderLayout.EAST);
+		getContentPane().add(ButtonDrawer.getNorthButtonPanel(), BorderLayout.NORTH);
+		getContentPane().add(ButtonDrawer.getSouthButtonPanel(), BorderLayout.SOUTH);
+		getContentPane().add(ButtonDrawer.getWestButtonPanel(), BorderLayout.WEST);
+		// JPanel subPanel = new JPanel();
+		// subPanel.setLayout(new BoxLayout(subPanel, BoxLayout.Y_AXIS));
+		//
+		// subPanel.add(new JButton("1"));
+		// subPanel.add(new JButton("2"));
+		// subPanel.add(new JButton("3"));
+		// getContentPane().add(subPanel, BorderLayout.LINE_START);
+		// startButtonSwapper(buttons);
 	}
 
 	private List<JButton> createButtons() {

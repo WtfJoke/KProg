@@ -26,7 +26,7 @@ public class SwapButtons implements ActionListener {
 		} else {
 			Collections.rotate(buttons, -1);
 		}
-		ButtonDrawer.redraw(frame.getContentPane(), buttons);
+		ButtonDrawer.redraw(buttons);
 	}
 
 	public void switchdirection() {
