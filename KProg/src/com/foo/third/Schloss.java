@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.Timer;
 
 import com.foo.second.UnlockActionListener;
@@ -55,13 +54,15 @@ public class Schloss extends JFrame {
 		List<JButton> buttons = new ArrayList<>();
 		for (int i = 0; i < AMOUNTOFBUTTONS; i++) {
 			JButton button = new JButton(String.valueOf(i));
-			getContentPane().add(button);
 			buttons.add(button);
 			button.setActionCommand(button.getText());
 			button.addActionListener(unlockActionListener);
 		}
-		getContentPane().add(new JLabel(""), null, 4); // empty cell
-		getContentPane().add(new JLabel(""), null, 7); // empty cell
+		ButtonDrawer.draw(getContentPane(), buttons);
+		startButtonSwapper(buttons);
+	}
+
+	private void startButtonSwapper(List<JButton> buttons) {
 		new Timer((int) TimeUnit.SECONDS.toMillis(1), new SwapButtons(this, buttons)).start();
 	}
 }
