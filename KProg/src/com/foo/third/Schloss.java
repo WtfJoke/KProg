@@ -1,7 +1,7 @@
 package com.foo.third;
 
 import java.awt.BorderLayout;
-import java.awt.LayoutManager;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -22,18 +22,17 @@ import com.foo.second.WindowQuitter;
  *
  */
 public class Schloss extends JFrame {
+	private static final int BUTTONSWAPDELAY = (int) TimeUnit.SECONDS.toMillis(1);
 	private static final long serialVersionUID = 2624446559320231971L;
 	private static final int AMOUNTOFBUTTONS = 10;
 	private List<Integer> unlockCode;
 
 	public Schloss() {
 		addWindowListener(new WindowQuitter());
-		setSize(600, 300);
-		// GridLayout layout = new GridLayout(4, 3);
-		LayoutManager layout = new BorderLayout();
-		getContentPane().setLayout(layout);
+		getContentPane().setLayout(new BorderLayout());
 		createUnlockCode();
 		addButtons();
+		pack();
 		setVisible(true);
 	}
 
@@ -58,14 +57,7 @@ public class Schloss extends JFrame {
 		getContentPane().add(ButtonDrawer.getNorthButtonPanel(), BorderLayout.NORTH);
 		getContentPane().add(ButtonDrawer.getSouthButtonPanel(), BorderLayout.SOUTH);
 		getContentPane().add(ButtonDrawer.getWestButtonPanel(), BorderLayout.WEST);
-		// JPanel subPanel = new JPanel();
-		// subPanel.setLayout(new BoxLayout(subPanel, BoxLayout.Y_AXIS));
-		//
-		// subPanel.add(new JButton("1"));
-		// subPanel.add(new JButton("2"));
-		// subPanel.add(new JButton("3"));
-		// getContentPane().add(subPanel, BorderLayout.LINE_START);
-		// startButtonSwapper(buttons);
+		startButtonSwapper(buttons);
 	}
 
 	private List<JButton> createButtons() {
@@ -73,6 +65,8 @@ public class Schloss extends JFrame {
 		List<JButton> buttons = new ArrayList<>();
 		for (int i = 0; i < AMOUNTOFBUTTONS; i++) {
 			JButton button = new JButton(String.valueOf(i));
+			Dimension dimension = new Dimension(75, 75);
+			button.setSize(dimension);
 			buttons.add(button);
 			button.setActionCommand(button.getText());
 			button.addActionListener(unlockActionListener);
@@ -81,6 +75,6 @@ public class Schloss extends JFrame {
 	}
 
 	private void startButtonSwapper(List<JButton> buttons) {
-		new Timer((int) TimeUnit.SECONDS.toMillis(1), new SwapButtons(this, buttons)).start();
+		new Timer(BUTTONSWAPDELAY, new SwapButtons(this, buttons)).start();
 	}
 }
