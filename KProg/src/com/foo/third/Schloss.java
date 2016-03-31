@@ -36,6 +36,10 @@ public class Schloss extends JFrame {
 		setVisible(true);
 	}
 
+	public static void main(String[] args) {
+		new Schloss();
+	}
+
 	private void createUnlockCode() {
 		unlockCode = new ArrayList<>();
 		unlockCode.add(Integer.valueOf(2));
@@ -44,10 +48,6 @@ public class Schloss extends JFrame {
 		unlockCode.add(Integer.valueOf(3));
 		unlockCode.add(Integer.valueOf(6));
 		unlockCode.add(Integer.valueOf(0));
-	}
-
-	public static void main(String[] args) {
-		new Schloss();
 	}
 
 	private void addButtons() {
