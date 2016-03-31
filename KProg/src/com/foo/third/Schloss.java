@@ -11,8 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-import com.foo.second.WindowQuitter;
-
 /**
  * Frame, which is used to guess a secret code
  * 
@@ -22,17 +20,17 @@ import com.foo.second.WindowQuitter;
  *
  */
 public class Schloss extends JFrame {
-	private static final int BUTTONSWAPDELAY = (int) TimeUnit.SECONDS.toMillis(1);
 	private static final long serialVersionUID = 2624446559320231971L;
+	private static final int BUTTONSWAPDELAY = (int) TimeUnit.SECONDS.toMillis(1);
 	private static final int AMOUNTOFBUTTONS = 10;
 	private List<Integer> unlockCode;
 
 	public Schloss() {
-		addWindowListener(new WindowQuitter());
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
 		createUnlockCode();
 		addButtons();
-		pack();
+		pack(); // packs the gui in order to make it look good
 		setVisible(true);
 	}
 
@@ -40,6 +38,9 @@ public class Schloss extends JFrame {
 		new Schloss();
 	}
 
+	/**
+	 * Secret unlock code is created here
+	 */
 	private void createUnlockCode() {
 		unlockCode = new ArrayList<>();
 		unlockCode.add(Integer.valueOf(2));
@@ -50,9 +51,12 @@ public class Schloss extends JFrame {
 		unlockCode.add(Integer.valueOf(0));
 	}
 
+	/**
+	 * Add the buttons to the frame
+	 */
 	private void addButtons() {
 		List<JButton> buttons = createButtons();
-		ButtonDrawer.draw(buttons);
+		ButtonDrawer.fillPanels(buttons);
 		getContentPane().add(ButtonDrawer.getEastButtonPanel(), BorderLayout.EAST);
 		getContentPane().add(ButtonDrawer.getNorthButtonPanel(), BorderLayout.NORTH);
 		getContentPane().add(ButtonDrawer.getSouthButtonPanel(), BorderLayout.SOUTH);
@@ -75,7 +79,10 @@ public class Schloss extends JFrame {
 		return buttons;
 	}
 
+	/**
+	 * Add a timer which rotates the buttons
+	 */
 	private void startButtonSwapper(List<JButton> buttons) {
-		new Timer(BUTTONSWAPDELAY, new SwapButtons(buttons)).start();
+		new Timer(BUTTONSWAPDELAY, new RotateButtons(buttons)).start();
 	}
 }

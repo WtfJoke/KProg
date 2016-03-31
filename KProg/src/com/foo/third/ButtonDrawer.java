@@ -8,6 +8,12 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+/**
+ * Responsible for fill buttons in correct panels
+ * 
+ * @author manue
+ *
+ */
 public abstract class ButtonDrawer {
 
 	private static JPanel eastButtonPanel;
@@ -16,6 +22,7 @@ public abstract class ButtonDrawer {
 	private static JPanel southButtonPanel;
 
 	static {
+		// create panels with boxlayouts
 		eastButtonPanel = new JPanel();
 		eastButtonPanel.setLayout(new BoxLayout(eastButtonPanel, BoxLayout.Y_AXIS));
 		westButtonPanel = new JPanel();
@@ -30,13 +37,28 @@ public abstract class ButtonDrawer {
 
 	}
 
-	static void redraw(List<JButton> buttons) {
-		eastButtonPanel.removeAll();
-		draw(buttons);
+	/**
+	 * Fill panels and redraw afterwards to update the frame
+	 */
+	static void refillPanels(List<JButton> buttons) {
+		fillPanels(buttons);
+		redraw();
+	}
+
+	/**
+	 * After redraw
+	 */
+	static void redraw() {
+		SwingUtilities.updateComponentTreeUI(northButtonPanel);
+		SwingUtilities.updateComponentTreeUI(southButtonPanel);
+		SwingUtilities.updateComponentTreeUI(westButtonPanel);
 		SwingUtilities.updateComponentTreeUI(eastButtonPanel);
 	}
 
-	static void draw(List<JButton> buttons) {
+	/**
+	 * Fill left, right, top and bottom panels
+	 */
+	static void fillPanels(List<JButton> buttons) {
 		JButton postponedWestButton = null;
 		for (int i = 0; i < buttons.size(); i++) {
 			JButton button = buttons.get(i);
@@ -45,6 +67,7 @@ public abstract class ButtonDrawer {
 			} else if (i == 3 || i == 4) {
 				eastButtonPanel.add(button);
 			} else if (i == 8) {
+				// temporary remember button from this position
 				postponedWestButton = button;
 			} else if (i == 9) {
 				westButtonPanel.add(button);
@@ -54,6 +77,7 @@ public abstract class ButtonDrawer {
 		}
 
 		if (postponedWestButton != null) {
+			// add temporary button at the end
 			westButtonPanel.add(postponedWestButton);
 		}
 

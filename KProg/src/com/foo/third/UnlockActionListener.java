@@ -44,7 +44,7 @@ public class UnlockActionListener implements ActionListener {
 			currentListPosition = 0;
 			userCode.clear();
 			setBackground(Color.red);
-			SwapButtons.switchdirection();
+			RotateButtons.switchdirection();
 		}
 	}
 
