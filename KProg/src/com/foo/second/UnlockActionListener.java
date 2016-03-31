@@ -31,7 +31,7 @@ public class UnlockActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
 		Integer userInput = Integer.valueOf(actionCommand);
-		if (userInput == unlockCode.get(currentListPosition)) {
+		if (userInput.equals(unlockCode.get(currentListPosition))) {
 			userCode.add(userInput);
 			belongToFrame.setBackground(Color.green);
 			currentListPosition++;
