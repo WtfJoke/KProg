@@ -21,20 +21,27 @@ import javax.swing.Timer;
  */
 public class Schloss extends JFrame {
 	private static final long serialVersionUID = 2624446559320231971L;
-	private static final int BUTTONSWAPDELAY = (int) TimeUnit.SECONDS.toMillis(1);
+	private static final int DEFAULTBUTTONSWAPDELAY = (int) TimeUnit.SECONDS.toMillis(1);
 	private static final int AMOUNTOFBUTTONS = 10;
 	private List<Integer> unlockCode;
+	private final int buttonswapdelay;
 
 	public Schloss() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new BorderLayout());
-		createUnlockCode();
-		addButtons();
-		pack(); // packs the gui in order to make it look good
-		setVisible(true);
+		this(DEFAULTBUTTONSWAPDELAY);
+	}
+
+	public Schloss(int rotationSpeed) {
+		buttonswapdelay = rotationSpeed;
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.getContentPane().setLayout(new BorderLayout());
+		this.createUnlockCode();
+		this.addButtons();
+		this.pack(); // packs the gui in order to make it look good
+		this.setVisible(true);
 	}
 
 	public static void main(String[] args) {
+		new Schloss();
 		new Schloss();
 	}
 
@@ -56,17 +63,19 @@ public class Schloss extends JFrame {
 	 */
 	private void addButtons() {
 		List<JButton> buttons = createButtons();
-		ButtonDrawer.fillPanels(buttons);
-		getContentPane().add(ButtonDrawer.getEastButtonPanel(), BorderLayout.EAST);
-		getContentPane().add(ButtonDrawer.getNorthButtonPanel(), BorderLayout.NORTH);
-		getContentPane().add(ButtonDrawer.getSouthButtonPanel(), BorderLayout.SOUTH);
-		getContentPane().add(ButtonDrawer.getWestButtonPanel(), BorderLayout.WEST);
-		startButtonSwapper(buttons);
+		ButtonDrawer drawer = new ButtonDrawer();
+		drawer.createPanels();
+		drawer.fillPanels(buttons);
+		getContentPane().add(drawer.getEastButtonPanel(), BorderLayout.EAST);
+		getContentPane().add(drawer.getNorthButtonPanel(), BorderLayout.NORTH);
+		getContentPane().add(drawer.getSouthButtonPanel(), BorderLayout.SOUTH);
+		getContentPane().add(drawer.getWestButtonPanel(), BorderLayout.WEST);
+		startButtonSwapper(buttons, drawer);
 	}
 
 	private List<JButton> createButtons() {
 		List<JButton> buttons = new ArrayList<>();
-		UnlockActionListener unlockActionListener = new UnlockActionListener(unlockCode, buttons);
+		UnlockMouseListener unlockActionListener = new UnlockMouseListener(unlockCode, buttons);
 		for (int i = 0; i < AMOUNTOFBUTTONS; i++) {
 			JButton button = new JButton(String.valueOf(i));
 			Dimension dimension = new Dimension(75, 75);
@@ -74,7 +83,7 @@ public class Schloss extends JFrame {
 			button.setSize(dimension);
 			button.setActionCommand(button.getText());
 			button.setBackground(Color.green);
-			button.addActionListener(unlockActionListener);
+			button.addMouseMotionListener(unlockActionListener);
 		}
 		return buttons;
 	}
@@ -82,7 +91,14 @@ public class Schloss extends JFrame {
 	/**
 	 * Add a timer which rotates the buttons
 	 */
-	private void startButtonSwapper(List<JButton> buttons) {
-		new Timer(BUTTONSWAPDELAY, new RotateButtons(buttons)).start();
+	private void startButtonSwapper(List<JButton> buttons, ButtonDrawer btDrawerRef) {
+		Timer timer = new Timer(buttonswapdelay, new RotateButtons(buttons, btDrawerRef));
+		timer.start();
+	}
+
+	public static void createFasterSchloss() {
+		// int oldDelay = .getDelay();
+		// int newDelay = (int) (oldDelay - oldDelay * 0.5); // increase by 50%
+		// new Schloss(newDelay);
 	}
 }
