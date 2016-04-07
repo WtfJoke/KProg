@@ -43,12 +43,12 @@ public class Schloss extends JFrame {
 	 */
 	private void createUnlockCode() {
 		unlockCode = new ArrayList<>();
+		unlockCode.add(Integer.valueOf(0));
+		unlockCode.add(Integer.valueOf(7));
+		unlockCode.add(Integer.valueOf(0));
+		unlockCode.add(Integer.valueOf(4));
+		unlockCode.add(Integer.valueOf(1));
 		unlockCode.add(Integer.valueOf(2));
-		unlockCode.add(Integer.valueOf(3));
-		unlockCode.add(Integer.valueOf(0));
-		unlockCode.add(Integer.valueOf(3));
-		unlockCode.add(Integer.valueOf(6));
-		unlockCode.add(Integer.valueOf(0));
 	}
 
 	/**
