@@ -18,9 +18,11 @@ public class RotateButtons implements ActionListener {
 
 	private List<JButton> buttons;
 	private static boolean clockwise;
+	private ButtonDrawer drawer;
 
-	public RotateButtons(List<JButton> buttons) {
+	public RotateButtons(List<JButton> buttons, ButtonDrawer drawer) {
 		this.buttons = buttons;
+		this.drawer = drawer;
 	}
 
 	@Override
@@ -30,7 +32,7 @@ public class RotateButtons implements ActionListener {
 		} else {
 			Collections.rotate(buttons, -1); // rotates counterclockwise
 		}
-		ButtonDrawer.refillPanels(buttons); // redraw
+		drawer.refillPanels(buttons); // redraw
 	}
 
 	/**

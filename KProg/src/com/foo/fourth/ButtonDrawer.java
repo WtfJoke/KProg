@@ -14,14 +14,14 @@ import javax.swing.SwingUtilities;
  * @author manue
  *
  */
-public abstract class ButtonDrawer {
+public class ButtonDrawer {
 
-	private static JPanel eastButtonPanel;
-	private static JPanel westButtonPanel;
-	private static JPanel northButtonPanel;
-	private static JPanel southButtonPanel;
+	private JPanel eastButtonPanel;
+	private JPanel westButtonPanel;
+	private JPanel northButtonPanel;
+	private JPanel southButtonPanel;
 
-	static {
+	public void createPanels() {
 		// create panels with boxlayouts
 		eastButtonPanel = new JPanel();
 		eastButtonPanel.setLayout(new BoxLayout(eastButtonPanel, BoxLayout.Y_AXIS));
@@ -34,13 +34,12 @@ public abstract class ButtonDrawer {
 		southButtonPanel = new JPanel();
 		southButtonPanel.setLayout(new BoxLayout(southButtonPanel, BoxLayout.LINE_AXIS));
 		southButtonPanel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-
 	}
 
 	/**
 	 * Fill panels and redraw afterwards to update the frame
 	 */
-	static void refillPanels(List<JButton> buttons) {
+	public void refillPanels(List<JButton> buttons) {
 		fillPanels(buttons);
 		redraw();
 	}
@@ -48,7 +47,7 @@ public abstract class ButtonDrawer {
 	/**
 	 * After redraw
 	 */
-	static void redraw() {
+	public void redraw() {
 		SwingUtilities.updateComponentTreeUI(northButtonPanel);
 		SwingUtilities.updateComponentTreeUI(southButtonPanel);
 		SwingUtilities.updateComponentTreeUI(westButtonPanel);
@@ -58,7 +57,7 @@ public abstract class ButtonDrawer {
 	/**
 	 * Fill left, right, top and bottom panels
 	 */
-	static void fillPanels(List<JButton> buttons) {
+	public void fillPanels(List<JButton> buttons) {
 		JButton postponedWestButton = null;
 		for (int i = 0; i < buttons.size(); i++) {
 			JButton button = buttons.get(i);
@@ -83,19 +82,19 @@ public abstract class ButtonDrawer {
 
 	}
 
-	static JPanel getEastButtonPanel() {
+	public JPanel getEastButtonPanel() {
 		return eastButtonPanel;
 	}
 
-	public static JPanel getNorthButtonPanel() {
+	public JPanel getNorthButtonPanel() {
 		return northButtonPanel;
 	}
 
-	public static JPanel getWestButtonPanel() {
+	public JPanel getWestButtonPanel() {
 		return westButtonPanel;
 	}
 
-	public static JPanel getSouthButtonPanel() {
+	public JPanel getSouthButtonPanel() {
 		return southButtonPanel;
 	}
 
