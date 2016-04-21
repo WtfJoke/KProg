@@ -67,28 +67,7 @@ class TextQView extends JPanel implements Observer // Spectator
 } // end TextQView
 
 /**
- * !Translate: Das ist ein View fuer graphische Darstellung eines Quadratischen
- * Polynoms! Class which ...
- */
-class GraphQView extends JPanel implements Observer {
-	private static final long serialVersionUID = 1L;
-
-	public GraphQView(Qpolynom p) {
-		// TODO Auto-generated constructor stub
-	}
-
-	// Beobachter
-	// Uebungsaufgabe!
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-	}
-} // end GraphQView
-
-/**
  * Class which ...
- * 
- *
  */
 class Qpolynom extends Observable // Beobachtbares
 {
