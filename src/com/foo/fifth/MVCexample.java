@@ -116,7 +116,7 @@ class Qpolynom extends Observable // Beobachtbares
 	public void setConstant(int n) {
 		constant = n; // konstanter Koeffizient
 		setChanged();
-		notifyObservers();
+		// notifyObservers();
 	}
 
 	/**
@@ -127,7 +127,7 @@ class Qpolynom extends Observable // Beobachtbares
 	public void setLinear(int n) {
 		linear = n; // linearer Koeffizient
 		setChanged();
-		notifyObservers();
+		// notifyObservers();
 	}
 
 	/**
@@ -138,7 +138,7 @@ class Qpolynom extends Observable // Beobachtbares
 	public void setQuadratic(int n) {
 		quadratic = n; // quadratischer Koeffizient
 		setChanged();
-		notifyObservers();
+		// notifyObservers();
 	}
 } // end Qpolynom
 
@@ -160,7 +160,7 @@ public class MVCexample extends JApplet // Das GUI-Programm
 		Container cp = getContentPane(); // Fenster-Container
 		cp.setLayout(new GridLayout(5, 1, 10, 10)); // 5x1-Grid, 10-er Abstaende
 
-		final Qpolynom p = new Qpolynom(1, 2, 3); // das Modell
+		final Qpolynom polynomModel = new Qpolynom(1, 2, 3); // das Modell
 
 		sa = new JSlider(SwingConstants.HORIZONTAL, -10, 10, 1); // Erzeugung
 		sb = new JSlider(SwingConstants.HORIZONTAL, -10, 10, 2); // der
@@ -199,7 +199,8 @@ public class MVCexample extends JApplet // Das GUI-Programm
 			public void stateChanged(ChangeEvent evt) {
 				JSlider source = (JSlider) evt.getSource();
 				if (!source.getValueIsAdjusting()) {
-					p.setConstant(source.getValue()); // set... benutzen
+					polynomModel.setConstant(source.getValue()); // set...
+					polynomModel.notifyObservers(source);
 				}
 			}
 		});
@@ -210,7 +211,8 @@ public class MVCexample extends JApplet // Das GUI-Programm
 			public void stateChanged(ChangeEvent evt) {
 				JSlider source = (JSlider) evt.getSource();
 				if (!source.getValueIsAdjusting()) {
-					p.setLinear(source.getValue()); // set... benutzen
+					polynomModel.setLinear(source.getValue()); // set...
+					polynomModel.notifyObservers(source);
 				}
 			}
 		});
@@ -219,21 +221,24 @@ public class MVCexample extends JApplet // Das GUI-Programm
 			public void stateChanged(ChangeEvent evt) {
 				JSlider source = (JSlider) evt.getSource();
 				if (!source.getValueIsAdjusting()) {
-					p.setQuadratic(source.getValue()); // set... benutzen
+					polynomModel.setQuadratic(source.getValue()); // set...
+					polynomModel.notifyObservers(source);
 				}
 			}
 		});
 
 		// changed
-		TextQView textView1 = new TextQView(p); // 1. View
-		GraphQView graphView = new GraphQView(p); // nach Uebung
-		TextQView textView2 = new TextQView(p); // 2. View
+		TextQView textView1 = new TextQView(polynomModel); // 1. View
+		GraphQView graphView = new GraphQView(polynomModel); // nach Uebung
+		TextQView textView2 = new TextQView(polynomModel); // 2. View
 
-		p.addObserver(textView1); // Views als Observer registrieren
-		p.addObserver(textView2); // ..
+		polynomModel.addObserver(textView1); // Views als Observer registrieren
+		polynomModel.addObserver(textView2); // ..
+		polynomModel.addObserver(graphView);
 
 		cp.add(textView1); // Views zum Fenster hinzufuegen
 		cp.add(textView2); // ..
+		// cp.add(graphView);
 		// ...
 		// ...
 		cp.add(sa); // Controller hinzufuegen
