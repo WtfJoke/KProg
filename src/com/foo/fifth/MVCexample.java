@@ -4,7 +4,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
-// fuer Observer und Observable 
+// for Observer and Observable 
 import java.util.Observable;
 import java.util.Observer;
 
@@ -19,17 +19,24 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-//  Das ist ein View fuer textuelle Darstellung eines Quadratischen Polynoms
-class TextQView extends JPanel implements Observer { // Beobachter
-	JTextField a = new JTextField(10), // Textfelder fuer
-			b = new JTextField(10), // drei Koeffizienten
+/**
+ * !Translate: Das ist ein View fuer textuelle Darstellung eines Quadratischen
+ * Polynoms! Class which
+ * 
+ *
+ */
+class TextQView extends JPanel implements Observer // Spectator
+{
+	private static final long serialVersionUID = 1L;
+	JTextField a = new JTextField(10), // Textfields for
+			b = new JTextField(10), // three coefficients
 			c = new JTextField(10); // ...
 	JLabel al = new JLabel("Konstante", JLabel.RIGHT), // Labels ...
 			bl = new JLabel("Linearer Koeffizient", JLabel.RIGHT),
 			cl = new JLabel("Quadratischer Koeffizient", JLabel.RIGHT);
 	Qpolynom myPolynom; // das Modell, ein Polynom
 
-	TextQView(Qpolynom q) { // Konstuktor
+	TextQView(Qpolynom q) {
 		myPolynom = q; // merke Polynom
 		setLayout(new GridLayout(3, 2, 5, 5)); // 3x2-Grid, 5-er Abstaende
 		add(al);
@@ -41,76 +48,142 @@ class TextQView extends JPanel implements Observer { // Beobachter
 		a.setEditable(false);
 		b.setEditable(false); // Editierbarkeit
 		c.setEditable(false); // der Textfelder
-	} // end Konstuktor
+	} // end constructor
 		// ..
 		// ..
 
-	public void update(Observable o, Object arg) { // fuer Observer
+	public void update(Observable o, Object arg) {
 		if (o == myPolynom)
 			repaint(); // neu darstellen
 	}
 
-	public void paintComponent(Graphics g) { // Component darstllen
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g); // super aufrufen
 		a.setText("" + myPolynom.getConstant()); // Textfelder neu schreiben
 		b.setText("" + myPolynom.getLinear()); // dabei get... Methoden
 		c.setText("" + myPolynom.getQuadratic()); // aus Modell benutzen
 	}
 } // end TextQView
-	// Das ist ein View fuer graphische Darstellung eines Quadratischen Polynoms
-	// class GraphQView extends JPanel implements Observer { // Beobachter
-	// Uebungsaufgabe ....
-	// } // end GraphQView
-	// Das ist das Modell
 
-class Qpolynom extends Observable { // Beobachtbares
+/**
+ * !Translate: Das ist ein View fuer graphische Darstellung eines Quadratischen
+ * Polynoms! Class which ...
+ * 
+ *
+ */
+class GraphQView extends JPanel implements Observer {
+	private static final long serialVersionUID = 1L;
+
+	public GraphQView(Qpolynom p) {
+		// TODO Auto-generated constructor stub
+	}
+
+	// Beobachter
+	// Uebungsaufgabe!
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+	}
+} // end GraphQView
+
+/**
+ * Class which ...
+ * 
+ *
+ */
+class Qpolynom extends Observable // Beobachtbares
+{
 	private int // interne Daten
 	constant, linear, quadratic; // Polynom-Koeffizienten
 
-	public Qpolynom(int a, int b, int c) { // Konstuktor
+	public Qpolynom(int a, int b, int c) // Konstuktor
+	{
 		constant = a;
 		linear = b;
 		quadratic = c;
 	} // end Konstuktor
 
-	public int getConstant() { // getter Methode
+	/**
+	 * Method which returns ...
+	 * 
+	 * @return constant
+	 */
+	public int getConstant() // getter Methode
+	{
 		return constant; // konstanter Koeffizient
 	}
 
-	// ...
-	// ...
-	public int getLinear() { // getter Methode
+	/**
+	 * Method which returns ...
+	 * 
+	 * @return linear
+	 */
+	public int getLinear() // getter Methode
+	{
 		return linear; // linearer Koeffizient
 	}
 
-	public int getQuadratic() { // getter Methode
+	/**
+	 * Method which returns ...
+	 * 
+	 * @return quadratic
+	 */
+	public int getQuadratic() // getter Methode
+	{
 		return quadratic; // quadratischer Koeffizient
 	}
 
-	public void setConstant(int n) { // setter Methode
+	/**
+	 * Method which set
+	 * 
+	 * @param n
+	 */
+	public void setConstant(int n) // setter Methode
+	{
 		constant = n; // konstanter Koeffizient
 		setChanged();
 		notifyObservers();
 	}
 
-	public void setLinear(int n) { // setter Methode
+	/**
+	 * Method which set
+	 * 
+	 * @param n
+	 */
+	public void setLinear(int n) // setter Methode
+	{
 		linear = n; // linearer Koeffizient
 		setChanged();
 		notifyObservers();
 	}
 
-	public void setQuadratic(int n) { // setter Methode
+	/**
+	 * Method which set
+	 * 
+	 * @param n
+	 */
+	public void setQuadratic(int n) // setter Methode
+	{
 		quadratic = n; // quadratischer Koeffizient
 		setChanged();
 		notifyObservers();
 	}
 } // end Qpolynom
 
-// ..
-// ..
-public class MVCexample extends JApplet { // Das GUI-Programm
+/**
+ * Class which ...
+ * 
+ *
+ */
+public class MVCexample extends JApplet // Das GUI-Programm
+{
+	private static final long serialVersionUID = 1L;
 	JSlider sa, sb, sc; // Controller
 
+	/**
+	 * Method which initialize ...
+	 * 
+	 */
 	public void init() {
 		Container cp = getContentPane(); // Fenster-Container
 		cp.setLayout(new GridLayout(5, 1, 10, 10)); // 5x1-Grid, 10-er Abstaende
@@ -149,7 +222,8 @@ public class MVCexample extends JApplet { // Das GUI-Programm
 		sb.setBorder(new TitledBorder("Linearer Koeffizient")); // Schiebe-
 		sc.setBorder(new TitledBorder("Quadratischer Koeffizient")); // Regler
 
-		sa.addChangeListener(new ChangeListener() { // Listener, i.Kl.
+		sa.addChangeListener(new ChangeListener() // Listener, i.Kl.
+		{
 			public void stateChanged(ChangeEvent evt) {
 				JSlider source = (JSlider) evt.getSource();
 				if (!source.getValueIsAdjusting()) {
@@ -157,6 +231,7 @@ public class MVCexample extends JApplet { // Das GUI-Programm
 				}
 			}
 		});
+
 		// ...
 		// ...
 		sb.addChangeListener(new ChangeListener() { // Listener, i.Kl.
@@ -167,6 +242,7 @@ public class MVCexample extends JApplet { // Das GUI-Programm
 				}
 			}
 		});
+
 		sc.addChangeListener(new ChangeListener() { // Listener, i.Kl.
 			public void stateChanged(ChangeEvent evt) {
 				JSlider source = (JSlider) evt.getSource();
@@ -176,15 +252,16 @@ public class MVCexample extends JApplet { // Das GUI-Programm
 			}
 		});
 
-		TextQView view1 = new TextQView(p); // 1. View
-		// GraphQView view2 = new GraphQView (p); // nach Uebung
-		TextQView view2 = new TextQView(p); // 2. View
+		// changed
+		TextQView textView1 = new TextQView(p); // 1. View
+		GraphQView graphView = new GraphQView(p); // nach Uebung
+		TextQView textView2 = new TextQView(p); // 2. View
 
-		p.addObserver(view1); // Views als Observer registrieren
-		p.addObserver(view2); // ..
+		p.addObserver(textView1); // Views als Observer registrieren
+		p.addObserver(textView2); // ..
 
-		cp.add(view1); // Views zum Fenster hinzufuegen
-		cp.add(view2); // ..
+		cp.add(textView1); // Views zum Fenster hinzufuegen
+		cp.add(textView2); // ..
 		// ...
 		// ...
 		cp.add(sa); // Controller hinzufuegen
@@ -193,14 +270,25 @@ public class MVCexample extends JApplet { // Das GUI-Programm
 
 	} // end init
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Konsole.run(new MVCexample(), 400, 500); // Konsolenstart
 	}
 } // end MVCexample
 
-// ********************************************************************************
-
+/**
+ * Class Console ...
+ *
+ */
 class Konsole {
+	/**
+	 * Method which returns ...
+	 * 
+	 * @param o
+	 * @return t
+	 */
 	public static String title(Object o) {
 		String t = o.getClass().toString();
 		if (t.indexOf("class") != -1)
@@ -209,16 +297,35 @@ class Konsole {
 		return t;
 	}
 
+	/**
+	 * Method which ...
+	 * 
+	 * @param frame
+	 */
 	public static void setupClosing(JFrame frame) {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	/**
+	 * Method which ...
+	 * 
+	 * @param frame
+	 * @param width
+	 * @param height
+	 */
 	public static void run(JFrame frame, int width, int height) {
 		setupClosing(frame);
 		frame.setSize(width, height);
 		frame.setVisible(true);
 	}
 
+	/**
+	 * Method which ...
+	 * 
+	 * @param applet
+	 * @param width
+	 * @param height
+	 */
 	public static void run(JApplet applet, int width, int height) {
 		JFrame frame = new JFrame(title(applet));
 		setupClosing(frame);
@@ -229,6 +336,13 @@ class Konsole {
 		frame.setVisible(true);
 	}
 
+	/**
+	 * Method which ...
+	 * 
+	 * @param panel
+	 * @param width
+	 * @param height
+	 */
 	public static void run(JPanel panel, int width, int height) {
 		JFrame frame = new JFrame(title(panel));
 		setupClosing(frame);
