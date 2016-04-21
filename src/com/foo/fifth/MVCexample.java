@@ -28,22 +28,22 @@ import javax.swing.event.ChangeListener;
 class TextQView extends JPanel implements Observer // Spectator
 {
 	private static final long serialVersionUID = 1L;
-	JTextField a = new JTextField(10), // Textfields for
+	private JTextField a = new JTextField(10), // Textfields for
 			b = new JTextField(10), // three coefficients
 			c = new JTextField(10); // ...
-	JLabel al = new JLabel("Konstante", JLabel.RIGHT), // Labels ...
-			bl = new JLabel("Linearer Koeffizient", JLabel.RIGHT),
-			cl = new JLabel("Quadratischer Koeffizient", JLabel.RIGHT);
-	Qpolynom myPolynom; // das Modell, ein Polynom
+	private JLabel constantLabel = new JLabel("Konstante", JLabel.RIGHT),
+			linearCoefficientLabel = new JLabel("Linearer Koeffizient", JLabel.RIGHT),
+			squareCoefficientLabel = new JLabel("Quadratischer Koeffizient", JLabel.RIGHT);
+	private Qpolynom myPolynom; // das Modell, ein Polynom
 
 	TextQView(Qpolynom q) {
 		myPolynom = q; // merke Polynom
 		setLayout(new GridLayout(3, 2, 5, 5)); // 3x2-Grid, 5-er Abstaende
-		add(al);
+		add(constantLabel);
 		add(a); // Labels und Textfelder
-		add(bl);
+		add(linearCoefficientLabel);
 		add(b); // hinzufuegen
-		add(cl);
+		add(squareCoefficientLabel);
 		add(c); // ...
 		a.setEditable(false);
 		b.setEditable(false); // Editierbarkeit
@@ -53,8 +53,9 @@ class TextQView extends JPanel implements Observer // Spectator
 		// ..
 
 	public void update(Observable o, Object arg) {
-		if (o == myPolynom)
+		if (o == myPolynom) {
 			repaint(); // neu darstellen
+		}
 	}
 
 	public void paintComponent(Graphics g) {
@@ -68,8 +69,6 @@ class TextQView extends JPanel implements Observer // Spectator
 /**
  * !Translate: Das ist ein View fuer graphische Darstellung eines Quadratischen
  * Polynoms! Class which ...
- * 
- *
  */
 class GraphQView extends JPanel implements Observer {
 	private static final long serialVersionUID = 1L;
@@ -108,8 +107,7 @@ class Qpolynom extends Observable // Beobachtbares
 	 * 
 	 * @return constant
 	 */
-	public int getConstant() // getter Methode
-	{
+	public int getConstant() {
 		return constant; // konstanter Koeffizient
 	}
 
@@ -118,8 +116,7 @@ class Qpolynom extends Observable // Beobachtbares
 	 * 
 	 * @return linear
 	 */
-	public int getLinear() // getter Methode
-	{
+	public int getLinear() {
 		return linear; // linearer Koeffizient
 	}
 
@@ -128,8 +125,7 @@ class Qpolynom extends Observable // Beobachtbares
 	 * 
 	 * @return quadratic
 	 */
-	public int getQuadratic() // getter Methode
-	{
+	public int getQuadratic() {
 		return quadratic; // quadratischer Koeffizient
 	}
 
@@ -138,8 +134,7 @@ class Qpolynom extends Observable // Beobachtbares
 	 * 
 	 * @param n
 	 */
-	public void setConstant(int n) // setter Methode
-	{
+	public void setConstant(int n) {
 		constant = n; // konstanter Koeffizient
 		setChanged();
 		notifyObservers();
@@ -150,8 +145,7 @@ class Qpolynom extends Observable // Beobachtbares
 	 * 
 	 * @param n
 	 */
-	public void setLinear(int n) // setter Methode
-	{
+	public void setLinear(int n) {
 		linear = n; // linearer Koeffizient
 		setChanged();
 		notifyObservers();
@@ -162,8 +156,7 @@ class Qpolynom extends Observable // Beobachtbares
 	 * 
 	 * @param n
 	 */
-	public void setQuadratic(int n) // setter Methode
-	{
+	public void setQuadratic(int n) {
 		quadratic = n; // quadratischer Koeffizient
 		setChanged();
 		notifyObservers();
