@@ -8,7 +8,6 @@ import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
 
 /**
  * !Translate: Das ist ein View fuer graphische Darstellung eines Quadratischen
@@ -50,8 +49,9 @@ class GraphQView extends JPanel implements Observer {
 	// Uebungsaufgabe!
 	@Override
 	public void update(Observable o, Object arg) {
-		if (arg instanceof JSlider) {
-			setCycles(((JSlider) arg).getValue()); // Wert setzen
+		if (o instanceof Qpolynom) {
+			Qpolynom polynom = (Qpolynom) o;
+			// setCycles(((Qpolynom) o)..getValue()); // Wert setzen
 		}
 	}
 

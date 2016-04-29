@@ -116,7 +116,7 @@ class Qpolynom extends Observable // Beobachtbares
 	public void setConstant(int n) {
 		constant = n; // konstanter Koeffizient
 		setChanged();
-		// notifyObservers();
+		notifyObservers();
 	}
 
 	/**
@@ -127,7 +127,7 @@ class Qpolynom extends Observable // Beobachtbares
 	public void setLinear(int n) {
 		linear = n; // linearer Koeffizient
 		setChanged();
-		// notifyObservers();
+		notifyObservers();
 	}
 
 	/**
@@ -138,7 +138,7 @@ class Qpolynom extends Observable // Beobachtbares
 	public void setQuadratic(int n) {
 		quadratic = n; // quadratischer Koeffizient
 		setChanged();
-		// notifyObservers();
+		notifyObservers();
 	}
 } // end Qpolynom
 
@@ -200,7 +200,7 @@ public class MVCexample extends JApplet // Das GUI-Programm
 				JSlider source = (JSlider) evt.getSource();
 				if (!source.getValueIsAdjusting()) {
 					polynomModel.setConstant(source.getValue()); // set...
-					polynomModel.notifyObservers(source);
+					// polynomModel.notifyObservers(source);
 				}
 			}
 		});
@@ -212,7 +212,7 @@ public class MVCexample extends JApplet // Das GUI-Programm
 				JSlider source = (JSlider) evt.getSource();
 				if (!source.getValueIsAdjusting()) {
 					polynomModel.setLinear(source.getValue()); // set...
-					polynomModel.notifyObservers(source);
+					// polynomModel.notifyObservers(source);
 				}
 			}
 		});
@@ -222,7 +222,7 @@ public class MVCexample extends JApplet // Das GUI-Programm
 				JSlider source = (JSlider) evt.getSource();
 				if (!source.getValueIsAdjusting()) {
 					polynomModel.setQuadratic(source.getValue()); // set...
-					polynomModel.notifyObservers(source);
+					// polynomModel.notifyObservers(source);
 				}
 			}
 		});
